@@ -1,453 +1,856 @@
-# Spec-Driven Development
+---
+name: spec-driven-dev
+description: Structured artifact management for spec-driven feature development. Use when starting new features, creating implementation plans, tracking tasks, or organizing development notes. Triggers include "spec-driven", "feature spec", "implementation plan", "agentdocs", "feature artifacts", "development workflow", or when creating structured documentation for agent-assisted development.
+---
 
-Guide AI-assisted coding through a specification-first workflow that produces verifiable, well-documented code.
+# Spec-Driven Development Skill
+
+Standardize feature development with structured artifacts that provide clear context for AI agents and human developers. This skill establishes conventions for organizing specs, plans, tasks, and notes in a consistent directory structure.
+
+## Workflow Decision Tree
+
+Use this decision tree to determine the workflow:
+
+**1. Starting a new feature from scratch?**
+   → Use [Initialize Feature](#initialize-feature) workflow
+
+**2. Have requirements and need to create a spec?**
+   → Use [Write Spec](#write-spec) workflow
+
+**3. Have a spec and need to plan implementation?**
+   → Use [Create Plan](#create-plan) workflow
+
+**4. Ready to break down work into tasks?**
+   → Use [Define Tasks](#define-tasks) workflow
+
+**5. Need to capture decisions, research, or context?**
+   → Use [Add Notes](#add-notes) workflow
+
+**6. Need to log work progress, test results, or verification?**
+   → Use [Log Progress](#log-progress) workflow
+
+**7. Need reference patterns or templates?**
+   → Read [references/artifact_patterns.md](references/artifact_patterns.md)
+
+## Directory Structure
+
+All feature artifacts live under `agentdocs/features/`:
+
+```
+agentdocs/
+└── features/
+    └── <feature-slug>/
+        ├── spec.md              # Feature specification (required)
+        ├── plan.md              # Implementation plan (required)
+        ├── tasks/               # Individual task definitions
+        │   ├── 01-setup.md
+        │   ├── 02-core-impl.md
+        │   └── ...
+        ├── notes/               # Research, decisions, context
+        │   ├── architecture.md
+        │   ├── research.md
+        │   └── ...
+        └── progress/            # Session logs with test results & verification
+            ├── session-001.md
+            ├── session-002.md
+            └── ...
+```
+
+**Naming Conventions:**
+- Feature slugs: kebab-case, descriptive (e.g., `user-authentication`, `payment-processing`)
+- Task files: numbered prefix for ordering (e.g., `01-`, `02-`)
+- Note files: descriptive kebab-case names
+- Progress files: `session-NNN.md` with zero-padded numbers
+
+## Initialize Feature
+
+Create the complete artifact structure for a new feature.
+
+### Quick Start
+
+```bash
+# Create feature directory structure
+mkdir -p agentdocs/features/<feature-slug>/{tasks,notes,progress}
+
+# Create initial files
+touch agentdocs/features/<feature-slug>/spec.md
+touch agentdocs/features/<feature-slug>/plan.md
+```
+
+### Recommended Initialization Order
+
+1. **Create directory structure** with feature slug
+2. **Write spec.md** - Define what you're building
+3. **Create plan.md** - Outline how you'll build it
+4. **Add task files** - Break down into actionable units
+5. **Add notes** - Capture context as you go
+6. **Log progress** - Record work sessions and verification results
+
+### Example: Initialize "User Authentication" Feature
+
+```bash
+mkdir -p agentdocs/features/user-authentication/{tasks,notes,progress}
+```
+
+Then populate artifacts using workflows below.
+
+## Write Spec
+
+The spec defines **what** you're building. It's the source of truth for requirements.
+
+### Spec Template
+
+```markdown
+# Feature: [Feature Name]
+
+## Status
+- [ ] Draft
+- [ ] Review
+- [ ] Approved
+- [ ] In Progress
+- [ ] Complete
 
 ## Overview
 
-Spec-Driven Development (SDD) is a methodology where specifications are written before code, serving as the source of truth for AI agents to generate, test, and validate implementations. This skill teaches Claude to follow a structured **Specify → Plan → Tasks → Implement** workflow with validation gates at each phase.
+[2-3 sentence description of the feature and its value]
 
-The approach combines the discipline of upfront design with the flexibility of iterative development, leveraging tests as executable specifications that constrain AI output and prevent hallucinations.
+## Goals
 
-## When to Use
+- [Primary goal 1]
+- [Primary goal 2]
 
-- Building new features from scratch
-- Implementing complex business logic
-- Working on code that requires high reliability
-- Collaborating on features where requirements need to be explicit
-- Refactoring existing systems with clear behavioral contracts
-- Any task where "done" needs a clear, verifiable definition
+## Non-Goals
 
-## Prerequisites
+- [What this feature explicitly does NOT do]
+- [Scope boundaries]
 
-- Basic understanding of the target programming language
-- Familiarity with testing frameworks (unit tests, integration tests)
-- Version control basics (Git)
+## User Stories
 
-## Instructions
+### [User Type]
+- As a [user type], I want [action] so that [benefit]
+- As a [user type], I want [action] so that [benefit]
 
-### Phase 1: Specify
+## Requirements
 
-Create a specification that defines *what* the code should do, not *how*.
+### Functional Requirements
+1. [FR-1] [Requirement description]
+2. [FR-2] [Requirement description]
 
-**Specification Template:**
-
-```markdown
-# Feature: [Name]
-
-## Problem Statement
-[What problem does this solve? Why does it matter?]
-
-## Success Criteria
-- [ ] [Measurable outcome 1]
-- [ ] [Measurable outcome 2]
-- [ ] [Measurable outcome 3]
+### Non-Functional Requirements
+1. [NFR-1] [Performance/security/scalability requirement]
+2. [NFR-2] [Performance/security/scalability requirement]
 
 ## Acceptance Criteria
-Given [precondition]
-When [action]
-Then [expected result]
 
-## Boundaries
+- [ ] [Testable criterion 1]
+- [ ] [Testable criterion 2]
+- [ ] [Testable criterion 3]
 
-### ✅ Always
-- [Behavior that must always occur]
-- [Constraint that must always be respected]
+## Dependencies
 
-### ⚠️ Ask First
-- [Decision that requires clarification]
-- [Tradeoff that needs user input]
+- [External system or feature this depends on]
+- [Required library or service]
 
-### 🚫 Never
-- [Behavior that must never occur]
-- [Security/safety constraint]
+## Open Questions
 
-## Out of Scope
-- [Explicitly excluded functionality]
-- [Future considerations, not for this iteration]
+- [ ] [Unresolved question 1]
+- [ ] [Unresolved question 2]
+
+## References
+
+- [Link to related docs, designs, or discussions]
 ```
 
-**Key Principles:**
-1. Start with user outcomes, not implementation details
-2. Make success measurable and verifiable
-3. Use Given/When/Then format for behavioral clarity
-4. Define boundaries explicitly to prevent scope creep
-5. Call out what's NOT included to manage expectations
+### Spec Best Practices
 
-### Phase 2: Plan
+**Do:**
+- Keep requirements atomic and testable
+- Use clear, unambiguous language
+- Define explicit scope boundaries (non-goals)
+- Track open questions until resolved
+- Update status as feature progresses
 
-Transform the specification into a technical approach.
+**Don't:**
+- Include implementation details (that's for the plan)
+- Leave requirements vague or subjective
+- Skip non-functional requirements
+- Forget to define acceptance criteria
 
-**Planning Checklist:**
-1. Identify affected files and components
-2. Determine the testing strategy (unit, integration, e2e)
-3. List dependencies and potential blockers
-4. Define the implementation order
-5. Estimate complexity (not time - just relative effort)
+### Example: User Authentication Spec
 
-**Plan Document Template:**
+```markdown
+# Feature: User Authentication
+
+## Status
+- [x] Draft
+- [x] Review
+- [x] Approved
+- [ ] In Progress
+- [ ] Complete
+
+## Overview
+
+Implement secure user authentication using JWT tokens with support for
+email/password login and OAuth providers. This enables personalized
+experiences and protected resources.
+
+## Goals
+
+- Secure authentication with industry-standard practices
+- Support multiple authentication methods
+- Seamless user experience across devices
+
+## Non-Goals
+
+- Multi-factor authentication (future phase)
+- Enterprise SSO/SAML integration
+- User management admin interface
+
+## User Stories
+
+### End User
+- As a user, I want to sign up with my email so that I can create an account
+- As a user, I want to log in with Google so that I don't need another password
+- As a user, I want to stay logged in so that I don't have to authenticate repeatedly
+
+## Requirements
+
+### Functional Requirements
+1. [FR-1] Users can register with email and password
+2. [FR-2] Users can log in with email and password
+3. [FR-3] Users can log in with Google OAuth
+4. [FR-4] Sessions persist across browser restarts
+5. [FR-5] Users can log out from all devices
+
+### Non-Functional Requirements
+1. [NFR-1] Passwords hashed with bcrypt (cost factor 12)
+2. [NFR-2] JWT tokens expire after 7 days
+3. [NFR-3] Rate limit: 5 failed login attempts per minute
+
+## Acceptance Criteria
+
+- [ ] User can complete registration in under 30 seconds
+- [ ] Failed login shows appropriate error message
+- [ ] OAuth flow completes without leaving the app
+- [ ] Tokens refresh transparently before expiration
+
+## Dependencies
+
+- PostgreSQL database for user storage
+- Redis for session management
+- Google OAuth credentials
+
+## Open Questions
+
+- [ ] Should we support "remember me" longer sessions?
+- [x] Which OAuth providers to support initially? → Google only for MVP
+```
+
+## Create Plan
+
+The plan defines **how** you'll build the feature. It bridges spec to implementation.
+
+### Plan Template
 
 ```markdown
 # Implementation Plan: [Feature Name]
 
-## Affected Components
-- `path/to/file.ts` - [What changes]
-- `path/to/other.ts` - [What changes]
+**Spec**: [Link to spec.md]
+**Status**: Draft | In Progress | Complete
+**Last Updated**: YYYY-MM-DD
+
+## Approach Summary
+
+[1-2 paragraph summary of the implementation approach]
+
+## Architecture
+
+### Components
+
+| Component | Purpose | New/Modified |
+|-----------|---------|--------------|
+| [Name] | [What it does] | New |
+| [Name] | [What it does] | Modified |
+
+### Data Model
+
+[Describe database schema, data structures, or state management]
+
+```sql
+-- Example schema
+CREATE TABLE users (
+    id UUID PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    ...
+);
+```
+
+### API Design
+
+[Describe endpoints, contracts, or interfaces]
+
+```
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/logout
+GET  /api/auth/me
+```
+
+## Implementation Phases
+
+### Phase 1: [Name]
+- [Deliverable 1]
+- [Deliverable 2]
+
+### Phase 2: [Name]
+- [Deliverable 1]
+- [Deliverable 2]
+
+## Technical Decisions
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| [What] | [Selected option] | [Why] |
+| [What] | [Selected option] | [Why] |
+
+## Risks and Mitigations
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| [Risk] | High/Medium/Low | [How to address] |
 
 ## Testing Strategy
-- Unit tests for: [list functions/methods]
-- Integration tests for: [list interactions]
-- Manual verification: [list scenarios]
 
-## Implementation Order
-1. [First thing to build - foundational]
-2. [Second thing - builds on first]
-3. [Third thing - brings it together]
+- **Unit Tests**: [What to test at unit level]
+- **Integration Tests**: [What to test at integration level]
+- **E2E Tests**: [Critical user flows to test]
 
-## Open Questions
-- [Question that needs answering before proceeding]
+## Rollout Plan
 
-## Risks
-- [Potential issue] → [Mitigation]
+1. [Step 1 - e.g., Deploy behind feature flag]
+2. [Step 2 - e.g., Enable for internal users]
+3. [Step 3 - e.g., Gradual rollout to production]
+
+## Success Metrics
+
+- [Metric 1 and target]
+- [Metric 2 and target]
 ```
 
-**Validation Gate:** Before proceeding to tasks, confirm:
-- [ ] All open questions resolved
-- [ ] User has approved the approach
-- [ ] Testing strategy covers acceptance criteria
+### Plan Best Practices
 
-### Phase 3: Tasks
+**Do:**
+- Reference the spec explicitly
+- Document architectural decisions with rationale
+- Identify risks early
+- Define clear phases/milestones
+- Keep plan updated as implementation evolves
 
-Break the plan into atomic, testable units of work.
+**Don't:**
+- Duplicate spec content
+- Go into code-level detail (that's for tasks)
+- Skip testing strategy
+- Forget rollout considerations
 
-**Task Breakdown Rules:**
-1. Each task should be completable in one focused session
-2. Each task should have a clear "done" definition
-3. Each task should be independently testable
-4. Tasks should build incrementally (no big-bang integration)
+## Define Tasks
 
-**Task Format:**
+Tasks are atomic units of work. Each task should be completable in one focused session.
+
+### Task Template
 
 ```markdown
-## Task: [Short name]
+# Task: [Task Title]
 
-**Objective:** [One sentence description]
+**Feature**: [Link to ../spec.md]
+**Plan Phase**: [Which phase from plan.md]
+**Status**: TODO | IN_PROGRESS | BLOCKED | DONE
+**Priority**: P0 | P1 | P2
 
-**Test First:**
-```[language]
-// Write the test that defines success
-test('[behavior description]', () => {
-  // Arrange
-  // Act
-  // Assert
-});
+## Objective
+
+[1-2 sentences: What this task accomplishes]
+
+## Context
+
+[Background needed to understand this task. Link to relevant notes.]
+
+## Scope
+
+### In Scope
+- [Specific deliverable 1]
+- [Specific deliverable 2]
+
+### Out of Scope
+- [What this task does NOT include]
+
+## Implementation Details
+
+[Technical guidance, code examples, or pseudocode]
+
+```python
+# Example approach
+def example():
+    pass
 ```
-
-**Implementation Notes:**
-- [Specific guidance]
-- [Edge cases to handle]
-
-**Done When:**
-- [ ] Test passes
-- [ ] [Additional verification]
-```
-
-### Phase 4: Implement
-
-Execute tasks using Test-Driven Generation (TDG).
-
-**TDG Workflow:**
-
-1. **Write the test first** - The test IS the specification
-2. **Run the test** - Confirm it fails (red)
-3. **Implement minimal code** - Just enough to pass
-4. **Run the test** - Confirm it passes (green)
-5. **Refactor if needed** - Keep tests green
-6. **Commit** - Small, focused commits
-
-**Implementation Rules:**
-- Never implement without a failing test first
-- Don't add code "just in case" - YAGNI applies
-- Each commit should leave tests passing
-- Update the spec if requirements change during implementation
-
-### Validation Gates
-
-Before moving between phases, verify:
-
-**Specify → Plan:**
-- [ ] Specification reviewed and approved
-- [ ] All stakeholder questions answered
-- [ ] Boundaries (Always/Ask/Never) are clear
-
-**Plan → Tasks:**
-- [ ] Technical approach approved
-- [ ] No unresolved blockers
-- [ ] Testing strategy is comprehensive
-
-**Tasks → Implement:**
-- [ ] Tasks are atomic and testable
-- [ ] Implementation order makes sense
-- [ ] Each task has a clear test to write first
-
-**Implement → Done:**
-- [ ] All acceptance criteria tests pass
-- [ ] Code reviewed
-- [ ] Spec updated to reflect final implementation
-- [ ] Documentation current
-
-## Best Practices
-
-### Keep Specs Living
-Update specifications as you learn. A spec that diverges from reality is worse than no spec. Commit spec changes alongside code changes.
-
-### Tests Are Documentation
-Well-named tests explain behavior better than comments. Prefer `test('returns null when user not found')` over `test('test case 3')`.
-
-### One Real Example Beats Three Paragraphs
-In specifications, show concrete examples of inputs and expected outputs. AI agents work better with examples than abstract descriptions.
-
-### Scope Boundaries Prevent Creep
-The "Out of Scope" and "🚫 Never" sections are as important as what you're building. They keep focus tight and prevent gold-plating.
-
-### Small Commits, Fast Feedback
-Commit after each passing test. This creates a clear history and makes it easy to bisect if something breaks later.
-
-### Ask Before Assuming
-When hitting an "⚠️ Ask First" boundary, stop and clarify. Wrong assumptions compound into larger rework.
-
-## Common Pitfalls
-
-### Over-Specifying Implementation
-**Problem:** Spec describes HOW to build rather than WHAT behavior is needed.
-**Solution:** Focus on observable outcomes. "User sees confirmation message" not "Call showModal() with success flag".
-
-### Skipping the Test-First Step
-**Problem:** Writing implementation then tests leads to tests that verify code, not behavior.
-**Solution:** Always write the test first. If you can't write the test, the requirement isn't clear enough.
-
-### Monolithic Tasks
-**Problem:** Tasks too large to complete in one session lead to partial commits and broken states.
-**Solution:** Break down until each task has exactly one test to write and pass.
-
-### Spec Drift
-**Problem:** Implementation diverges from spec, but spec isn't updated.
-**Solution:** Treat spec updates as part of the task. No PR merges with outdated specs.
-
-### Analysis Paralysis
-**Problem:** Spending too long perfecting the spec before writing any code.
-**Solution:** Specs are living documents. Get to 80% confidence then start. Iterate.
-
-## Examples
-
-### Example 1: User Authentication Feature
-
-**Specification:**
-
-```markdown
-# Feature: Email/Password Authentication
-
-## Problem Statement
-Users need to securely log into the application using email and password credentials.
-
-## Success Criteria
-- [ ] Users can log in with valid credentials
-- [ ] Invalid credentials show clear error message
-- [ ] Account locks after 5 failed attempts
-- [ ] Session persists across page refreshes
 
 ## Acceptance Criteria
-Given a registered user with email "user@example.com"
-When they enter correct password and click "Log In"
-Then they are redirected to the dashboard
 
-Given a user enters incorrect password
-When they click "Log In"
-Then they see "Invalid email or password" (no hint which is wrong)
+- [ ] [Testable criterion 1]
+- [ ] [Testable criterion 2]
 
-Given a user has failed login 5 times
-When they try again with correct password
-Then they see "Account locked. Please reset password."
+## Files to Modify
 
-## Boundaries
+- `path/to/file1.py` - [What changes]
+- `path/to/file2.ts` - [What changes]
 
-### ✅ Always
-- Hash passwords with bcrypt (cost factor 12+)
-- Use constant-time comparison for password verification
-- Log authentication attempts (success and failure)
+## Dependencies
 
-### ⚠️ Ask First
-- Password complexity requirements
-- Session timeout duration
-- "Remember me" functionality
+- **Blocked by**: [Other task or external dependency]
+- **Blocks**: [Tasks waiting on this]
 
-### 🚫 Never
-- Store plaintext passwords
-- Reveal whether email exists in error messages
-- Allow unlimited login attempts
+## Notes
 
-## Out of Scope
-- Social login (Google, GitHub)
-- Two-factor authentication
-- Password reset flow
+- [Implementation note or consideration]
 ```
 
-**First Task:**
+### Task Best Practices
+
+**Do:**
+- Keep tasks small (2-4 hours of focused work)
+- Include clear acceptance criteria
+- List specific files to modify
+- Track dependencies between tasks
+- Number tasks for ordering (01-, 02-, etc.)
+
+**Don't:**
+- Create tasks too large to complete in one session
+- Leave acceptance criteria vague
+- Skip the "out of scope" section
+- Forget to update status
+
+### Task Sizing Guidelines
+
+| Size | Duration | Characteristics |
+|------|----------|-----------------|
+| Small | < 2 hours | Single file, well-defined change |
+| Medium | 2-4 hours | Multiple files, clear scope |
+| Large | 4-8 hours | Consider breaking down further |
+| Epic | > 8 hours | Must be broken into smaller tasks |
+
+### Example: Task File Structure
+
+```
+tasks/
+├── 01-database-schema.md      # Phase 1
+├── 02-user-model.md           # Phase 1
+├── 03-auth-endpoints.md       # Phase 2
+├── 04-jwt-middleware.md       # Phase 2
+├── 05-oauth-integration.md    # Phase 3
+├── 06-frontend-forms.md       # Phase 4
+└── 07-e2e-tests.md           # Phase 5
+```
+
+## Add Notes
+
+Notes capture context that doesn't fit in specs, plans, or tasks.
+
+### Note Types
+
+| Type | Purpose | Filename Pattern |
+|------|---------|------------------|
+| Architecture | System design decisions | `architecture.md` |
+| Research | Investigation findings | `research-<topic>.md` |
+| Decision | ADR-style decision records | `decision-<topic>.md` |
+| Meeting | Discussion summaries | `meeting-<date>.md` |
+| Retrospective | Post-implementation learnings | `retro.md` |
+
+### Decision Record Template
 
 ```markdown
-## Task: Validate login credentials
+# Decision: [Title]
 
-**Objective:** Verify email/password combination against stored hash
+**Date**: YYYY-MM-DD
+**Status**: Proposed | Accepted | Deprecated | Superseded
+**Deciders**: [Who made this decision]
 
-**Test First:**
-```typescript
-describe('AuthService.validateCredentials', () => {
-  test('returns user when credentials valid', async () => {
-    const user = await createTestUser('test@example.com', 'correctpassword');
-    const result = await authService.validateCredentials('test@example.com', 'correctpassword');
-    expect(result).toEqual(user);
-  });
+## Context
 
-  test('returns null when password incorrect', async () => {
-    await createTestUser('test@example.com', 'correctpassword');
-    const result = await authService.validateCredentials('test@example.com', 'wrongpassword');
-    expect(result).toBeNull();
-  });
+[What is the issue that we're seeing that is motivating this decision?]
 
-  test('returns null when email not found', async () => {
-    const result = await authService.validateCredentials('nobody@example.com', 'anypassword');
-    expect(result).toBeNull();
-  });
-});
+## Options Considered
+
+### Option 1: [Name]
+- **Pros**: [Advantages]
+- **Cons**: [Disadvantages]
+
+### Option 2: [Name]
+- **Pros**: [Advantages]
+- **Cons**: [Disadvantages]
+
+## Decision
+
+[What is the change that we're proposing or have agreed to implement?]
+
+## Consequences
+
+- [What becomes easier?]
+- [What becomes harder?]
+- [What are the risks?]
 ```
 
-**Done When:**
-- [ ] All three tests pass
-- [ ] Password comparison uses constant-time algorithm
-- [ ] No timing difference between "user not found" and "wrong password"
-```
-
-### Example 2: Shopping Cart Price Calculation
-
-**Specification:**
+### Research Note Template
 
 ```markdown
-# Feature: Cart Total Calculation
+# Research: [Topic]
 
-## Problem Statement
-Calculate accurate cart totals including discounts, taxes, and shipping.
+**Date**: YYYY-MM-DD
+**Related To**: [Link to spec or task]
 
-## Success Criteria
-- [ ] Subtotal reflects item prices × quantities
-- [ ] Percentage discounts apply correctly
-- [ ] Tax calculated on discounted subtotal
-- [ ] Free shipping threshold works
+## Question
 
-## Acceptance Criteria
-Given cart has 2x Widget ($10) and 1x Gadget ($25)
-When calculating total
-Then subtotal is $45.00
+[What are we trying to learn?]
 
-Given cart subtotal is $100 with 10% discount code
-When calculating total
-Then discount is $10.00 and new subtotal is $90.00
+## Findings
 
-Given cart is in California (7.25% tax)
-When calculating total
-Then tax is calculated on post-discount subtotal
+### [Subtopic 1]
+[What we learned]
 
-Given cart subtotal exceeds $50
-When calculating shipping
-Then shipping is $0.00 (free shipping applied)
+### [Subtopic 2]
+[What we learned]
 
-## Boundaries
+## Recommendations
 
-### ✅ Always
-- Round currency to 2 decimal places
-- Apply discounts before tax
-- Show line-item breakdown
+- [Recommendation 1]
+- [Recommendation 2]
 
-### ⚠️ Ask First
-- How to handle multiple discount codes
-- Tax-exempt items handling
-- International shipping rates
+## Sources
 
-### 🚫 Never
-- Allow negative totals
-- Apply tax to shipping
-- Stack percentage discounts
-
-## Out of Scope
-- Gift cards
-- Loyalty points
-- Subscription discounts
+- [Link to documentation]
+- [Link to article or resource]
 ```
 
-**Task Breakdown:**
+## Log Progress
 
-1. Calculate subtotal from line items
-2. Apply percentage discount to subtotal
-3. Calculate tax on discounted amount
-4. Determine shipping cost with free threshold
-5. Combine into final total with breakdown
+Progress logs capture the running history of work sessions - test results, build outputs, verification steps, and incremental progress. Unlike notes (which are durable context), progress logs are append-only records of what happened.
 
-**First Task Test:**
+### When to Create a Progress Log
 
-```typescript
-describe('CartCalculator.subtotal', () => {
-  test('sums price × quantity for all items', () => {
-    const cart = new Cart([
-      { name: 'Widget', price: 10.00, quantity: 2 },
-      { name: 'Gadget', price: 25.00, quantity: 1 }
-    ]);
-    expect(cart.subtotal()).toBe(45.00);
-  });
+Create a new session log when:
+- Starting work on a feature (new session)
+- Resuming after a break or context switch
+- Different agent picks up work
+- Significant milestone reached
 
-  test('returns 0 for empty cart', () => {
-    const cart = new Cart([]);
-    expect(cart.subtotal()).toBe(0.00);
-  });
+### Progress Log Template
 
-  test('handles fractional prices correctly', () => {
-    const cart = new Cart([
-      { name: 'Item', price: 10.99, quantity: 3 }
-    ]);
-    expect(cart.subtotal()).toBe(32.97);
-  });
-});
+```markdown
+# Session [NNN]: [Brief Description]
+
+**Date**: YYYY-MM-DD
+**Agent/Author**: [Identifier]
+**Tasks Worked**: [task-01, task-02]
+**Duration**: [Approximate time spent]
+
+## Summary
+
+[2-3 sentence summary of what was accomplished this session]
+
+## Work Log
+
+### [HH:MM] - [Activity]
+
+[Description of what was done]
+
+### [HH:MM] - [Activity]
+
+[Description of what was done]
+
+## Test Results
+
+### Unit Tests
+
+```
+[Test output - paste actual results]
 ```
 
-## Tools and Resources
+**Status**: ✅ All passing | ⚠️ X failing | ❌ Build broken
 
-- **GitHub Spec-Kit**: Open source toolkit for spec-driven development workflows
-- **Gherkin/Cucumber**: Given/When/Then syntax for acceptance criteria
-- **Jest/Vitest/pytest**: Testing frameworks for TDG workflow
-- **Agentic Coding Handbook**: Community resource for AI-assisted TDD
+### Integration Tests
 
-## Limitations
+```
+[Test output if applicable]
+```
 
-- Requires discipline to maintain specs alongside code
-- Initial overhead higher than "just coding" (pays off in reduced rework)
-- Not ideal for exploratory/prototype work where requirements are genuinely unknown
-- Specs can become stale if team doesn't commit to updates
+### Manual Verification
 
-## Related Skills
+- [x] [Verification step completed]
+- [x] [Verification step completed]
+- [ ] [Verification step pending]
 
-- **Code Review**: Review implementations against specifications
-- **Test-Driven Development**: Deep dive into TDD mechanics
-- **API Design**: Designing contract-first APIs
+## Build Output
 
-## Compatibility
+```
+[Build/compile output if relevant]
+```
 
-- **Claude Models**: All Claude 3+ models, Sonnet 4 or Opus 4 recommended
-- **Interfaces**: Claude.ai, API, Claude Code
-- **Minimum API Version**: Any
+## Issues Encountered
 
-## Author
+### [Issue Title]
 
-Claude Toolkit Community
+**Problem**: [What went wrong]
+**Resolution**: [How it was fixed] | **Status**: Unresolved
 
-## Version
+## Handoff Notes
 
-- **Created**: 2025-01-18
-- **Last Updated**: 2025-01-18
-- **Version**: 1.0.0
+[Context for the next session or agent - what's in progress, what's blocked, what's ready for review]
+
+## Next Steps
+
+- [ ] [What should happen next]
+- [ ] [What should happen next]
+```
+
+### Progress Log Best Practices
+
+**Do:**
+- Start a new session log for each work session
+- Include actual command output (tests, builds, errors)
+- Timestamp significant activities
+- Write handoff notes for continuity
+- Link to specific tasks being worked
+
+**Don't:**
+- Edit old session logs (append-only)
+- Include sensitive data in outputs
+- Skip test results - they're the evidence of progress
+- Forget handoff notes - they're critical for multi-agent work
+
+### Example: Session Log
+
+```markdown
+# Session 003: Implement JWT Authentication
+
+**Date**: 2024-01-15
+**Agent/Author**: claude-agent-1
+**Tasks Worked**: [03-auth-endpoints](../tasks/03-auth-endpoints.md)
+**Duration**: ~2 hours
+
+## Summary
+
+Implemented JWT token generation and validation middleware. All unit tests
+passing. Integration tests revealed an issue with token refresh that needs
+investigation.
+
+## Work Log
+
+### 10:30 - Started JWT implementation
+
+Created `src/auth/jwt.py` with token generation using PyJWT library.
+Followed patterns from plan.md for token structure.
+
+### 11:15 - Added middleware
+
+Created `src/middleware/auth.py` for request authentication.
+Integrated with FastAPI dependency injection.
+
+### 11:45 - Wrote unit tests
+
+Added tests for token generation, validation, and expiry.
+
+### 12:00 - Ran integration tests
+
+Found issue with refresh token flow - tokens not being invalidated
+on logout.
+
+## Test Results
+
+### Unit Tests
+
+```
+$ pytest tests/unit/test_jwt.py -v
+tests/unit/test_jwt.py::test_token_generation PASSED
+tests/unit/test_jwt.py::test_token_validation PASSED
+tests/unit/test_jwt.py::test_token_expiry PASSED
+tests/unit/test_jwt.py::test_invalid_token_rejected PASSED
+
+4 passed in 0.23s
+```
+
+**Status**: ✅ All passing
+
+### Integration Tests
+
+```
+$ pytest tests/integration/test_auth_flow.py -v
+tests/integration/test_auth_flow.py::test_login_flow PASSED
+tests/integration/test_auth_flow.py::test_protected_endpoint PASSED
+tests/integration/test_auth_flow.py::test_logout_invalidates_token FAILED
+
+FAILED tests/integration/test_auth_flow.py::test_logout_invalidates_token
+  - AssertionError: Token still valid after logout
+```
+
+**Status**: ⚠️ 1 failing
+
+## Issues Encountered
+
+### Token not invalidated on logout
+
+**Problem**: JWT tokens remain valid after logout because JWTs are stateless
+**Resolution**: Need to implement token blacklist in Redis (see task-04)
+**Status**: Deferred to task-04
+
+## Handoff Notes
+
+- JWT generation and validation working correctly
+- Middleware integrated and protecting routes
+- Logout invalidation requires Redis blacklist (task-04 dependency)
+- All code committed to branch `feature/user-auth`
+
+## Next Steps
+
+- [ ] Complete task-04 (Redis token blacklist) to fix logout
+- [ ] Update integration test once blacklist implemented
+- [ ] Begin task-05 (OAuth integration)
+```
+
+### Session Numbering
+
+Use zero-padded session numbers for sorting:
+- `session-001.md`
+- `session-002.md`
+- `session-010.md`
+
+For long-running features, consider monthly grouping:
+```
+progress/
+├── 2024-01/
+│   ├── session-001.md
+│   └── session-002.md
+└── 2024-02/
+    ├── session-003.md
+    └── session-004.md
+```
+
+## Key Concepts
+
+### Artifact Lifecycle
+
+```
+Spec (Draft) → Spec (Approved) → Plan → Tasks → Implementation → Spec (Complete)
+                      ↓                   ↓              ↓
+                   Notes ←←←←←←←←←←←←←← Notes      Progress Logs
+                                                   (test results,
+                                                    verification)
+```
+
+### Agent Context Loading
+
+When an agent starts work on a feature, it should load context in this order:
+
+1. **spec.md** - Understand what we're building
+2. **plan.md** - Understand how we're building it
+3. **Latest progress log** - Understand current state and handoff notes
+4. **Current task** - Focus on the immediate work
+5. **Relevant notes** - Additional context as needed
+
+### Cross-Referencing
+
+Always link between artifacts:
+
+```markdown
+<!-- In a task -->
+**Feature**: [User Authentication](../spec.md)
+**Plan Phase**: [Phase 2: Core Auth](../plan.md#phase-2-core-auth)
+
+<!-- In a note -->
+**Related Task**: [03-auth-endpoints](../tasks/03-auth-endpoints.md)
+```
+
+### Status Tracking
+
+Maintain consistent status across artifacts:
+
+| Artifact | Statuses |
+|----------|----------|
+| Spec | Draft, Review, Approved, In Progress, Complete |
+| Plan | Draft, In Progress, Complete |
+| Task | TODO, IN_PROGRESS, BLOCKED, DONE |
+
+## Resources
+
+### Templates (`templates/`)
+- `spec.md` - Feature specification template
+- `plan.md` - Implementation plan template
+- `task.md` - Task definition template
+- `progress.md` - Session progress log template
+- `decision.md` - Decision record template
+- `research.md` - Research note template
+
+### References (`references/`)
+- `artifact_patterns.md` - Advanced patterns for artifact management
+
+## Common Patterns
+
+### Feature Kickoff Checklist
+
+```markdown
+- [ ] Create feature directory: `agentdocs/features/<slug>/`
+- [ ] Create subdirectories: `tasks/`, `notes/`, and `progress/`
+- [ ] Write initial spec.md (Draft status)
+- [ ] Get spec reviewed and approved
+- [ ] Create plan.md with phases
+- [ ] Break Phase 1 into tasks
+- [ ] Create initial research notes if needed
+- [ ] Start first progress log when beginning work
+```
+
+### Updating Artifacts During Development
+
+As implementation progresses:
+
+1. **Log progress** with test results and verification outputs
+2. **Mark tasks DONE** when complete
+3. **Add notes** for decisions made during implementation
+4. **Update plan** if approach changes significantly
+5. **Check off acceptance criteria** in spec
+6. **Update spec status** when feature complete
+
+### Multi-Agent Coordination
+
+When multiple agents work on a feature:
+
+1. Each agent claims a task by setting status to `IN_PROGRESS`
+2. Agents read spec, plan, and **latest progress log** for context
+3. Agents create a **new session log** when starting work
+4. Agents add notes for decisions affecting other tasks
+5. Tasks explicitly declare dependencies with `Blocked by` / `Blocks`
+6. Agents write **handoff notes** in progress log before ending session
+7. Agents mark tasks `DONE` and update any blocking relationships
+
+## Troubleshooting
+
+**Spec too vague:**
+- Add more specific acceptance criteria
+- Break user stories into smaller, testable units
+- Define explicit non-goals to clarify scope
+
+**Plan doesn't match implementation:**
+- Update plan as you learn
+- Add decision notes explaining deviations
+- Keep plan as living document, not fixed contract
+
+**Tasks too large:**
+- If a task takes more than 4 hours, split it
+- Create subtasks for complex implementations
+- Each task should have clear, verifiable completion
+
+**Context loading slow:**
+- Keep specs focused (1-2 pages)
+- Summarize long notes
+- Use clear headings for scanability
+
+**Lost track of dependencies:**
+- Review `Blocked by` / `Blocks` in all tasks
+- Create dependency diagram in notes if complex
+- Update task statuses promptly
