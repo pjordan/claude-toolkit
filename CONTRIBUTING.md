@@ -89,6 +89,12 @@ All contributions must include:
 
 5. **Commit Changes**
 
+   Or run all checks via pre-commit:
+   ```bash
+   pre-commit run --all-files
+   ```
+
+6. **Commit Changes**
    ```bash
    git add .
    git commit -m "Add: brief description of changes"
@@ -100,8 +106,7 @@ All contributions must include:
    - `Update:` for improvements
    - `Docs:` for documentation
 
-6. **Push and PR**
-
+7. **Push and PR**
    ```bash
    git push origin feature/your-feature-name
    ```

@@ -149,6 +149,16 @@ print(message.content)
 - [Related subagent 1]
 - [External documentation]
 
+## Compatibility
+
+- **Tested Models**: [e.g., claude-sonnet-4-20250514, claude-opus-4-20250514]
+- **Minimum Model**: [e.g., Claude 3 Sonnet or higher]
+- **API Version**: [e.g., 2024-01-01]
+- **Interfaces**:
+  - Claude.ai: ✅ Projects, ✅ Custom Instructions
+  - API: ✅ Messages API
+  - Claude Code: ✅ System prompts
+
 ## Version History
 
 - **v1.0.0** ([Date]): Initial release

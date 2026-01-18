@@ -1,0 +1,47 @@
+repos:
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.43.0
+    hooks:
+      - id: markdownlint
+        args: ["--config", ".markdownlint.json"]
+
+  # Python validation
+  - repo: local
+    hooks:
+      - id: validate-skills
+        name: Validate Skills
+        entry: python tests/validate_skills.py
+        language: python
+        pass_filenames: false
+        files: ^skills/
+
+      - id: validate-mcps
+        name: Validate MCPs
+        entry: python tests/validate_mcps.py
+        language: python
+        pass_filenames: false
+        files: ^mcps/
+
+  # Security checks
+  - repo: local
+    hooks:
+      - id: check-env-files
+        name: Check for .env files
+        entry: bash -c 'find . -name ".env" -type f ! -name ".env.example" | grep -q . && echo "Error: .env files found" && exit 1 || exit 0'
+        language: system
+        pass_filenames: false
+
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^\.github/
+      - id: end-of-file-fixer
+        exclude: ^\.github/
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+      - id: check-merge-conflict

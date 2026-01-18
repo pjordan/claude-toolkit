@@ -106,7 +106,7 @@ a2a-agent/
 ├── references/                 # Reference documentation
 │   ├── a2a_patterns.md        # A2A SDK patterns
 │   └── fastapi_integration.md # FastAPI integration
-└── assets/                     # Agent templates
+└── templates/                  # Agent templates
     ├── basic-agent/           # Minimal template
     └── advanced-agent/        # Full-featured template
 ```

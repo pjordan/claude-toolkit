@@ -92,6 +92,22 @@ Use this template to create new skills for Claude.
 - [Tool 2]: [Description and link]
 - [Resource 1]: [Description and link]
 
+## Directory Structure (Optional)
+
+For skills with supplementary files, use this structure:
+
+```
+skill-name/
+├── SKILL.md              # Main skill documentation (required)
+├── README.md             # Quick start guide (required)
+├── references/           # Reference documentation
+│   └── *.md
+├── templates/            # Code templates or starter files
+│   └── */
+└── scripts/              # Helper scripts
+    └── *.py, *.sh
+```
+
 ## Limitations
 
 - [Known limitation 1]
@@ -101,6 +117,12 @@ Use this template to create new skills for Claude.
 
 - [Related skill 1]
 - [Related skill 2]
+
+## Compatibility
+
+- **Claude Models**: [e.g., All Claude 3+ models, Claude Sonnet 4 recommended]
+- **Interfaces**: [e.g., Claude.ai, API, Claude Code]
+- **Minimum API Version**: [e.g., 2024-01-01 or "Any"]
 
 ## Author
 
