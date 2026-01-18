@@ -111,6 +111,10 @@ Create a project structure for a Python CLI tool with:
 - Cannot access your existing codebase context (unless in Project)
 - Best for common patterns, less ideal for novel architectures
 
+## Examples
+
+- [API Endpoint](examples/api-endpoint.md) - REST API endpoint generation example
+
 ## See Also
 
 - [Subagents Guide](../../../docs/subagents-guide.md)
