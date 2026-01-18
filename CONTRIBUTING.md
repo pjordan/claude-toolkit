@@ -76,13 +76,24 @@ All contributions must include:
    - Test your contribution thoroughly
    - Update documentation
 
-4. **Run Tests**
+4. **Set Up Pre-commit Hooks** (recommended)
+   ```bash
+   pip install pre-commit
+   pre-commit install
+   ```
+
+5. **Run Tests**
    ```bash
    python tests/validate_skills.py
    python tests/validate_mcps.py
    ```
 
-5. **Commit Changes**
+   Or run all checks via pre-commit:
+   ```bash
+   pre-commit run --all-files
+   ```
+
+6. **Commit Changes**
    ```bash
    git add .
    git commit -m "Add: brief description of changes"
@@ -94,7 +105,7 @@ All contributions must include:
    - `Update:` for improvements
    - `Docs:` for documentation
 
-6. **Push and PR**
+7. **Push and PR**
    ```bash
    git push origin feature/your-feature-name
    ```
