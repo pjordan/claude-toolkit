@@ -12,14 +12,19 @@ Skills provide Claude with:
 
 ## 🎯 Available Skills
 
+### A2A Agent Development
+**Path**: `examples/a2a-agent/`
+**Purpose**: Build production-ready A2A (Agent-to-Agent) agents with a2a-sdk and FastAPI
+**Use When**: Creating new agents, implementing handlers, adding streaming capabilities, testing and deploying agents
+
 ### Code Review
-**Path**: `examples/code-review/`  
-**Purpose**: Automated code review with best practices and style checking  
+**Path**: `examples/code-review/`
+**Purpose**: Automated code review with best practices and style checking
 **Use When**: Reviewing code for quality, security, and maintainability
 
 ### Data Analysis
-**Path**: `examples/data-analysis/`  
-**Purpose**: Statistical analysis and data exploration workflows  
+**Path**: `examples/data-analysis/`
+**Purpose**: Statistical analysis and data exploration workflows
 **Use When**: Analyzing datasets, creating visualizations, finding insights
 
 ## 🔧 Using a Skill
