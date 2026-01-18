@@ -290,6 +290,16 @@ MIT License - see repository LICENSE file
 - **Created**: [Date]
 - **Last Updated**: [Date]
 
+## Compatibility
+
+- **Python**: >= 3.10
+- **MCP SDK**: >= 1.0.0
+- **Claude Interfaces**:
+  - Claude Desktop: ✅
+  - Claude Code: ✅
+  - API (direct): ❌ (requires MCP client)
+- **Operating Systems**: [e.g., Linux, macOS, Windows]
+
 ## Resources
 
 - [MCP Documentation](https://modelcontextprotocol.io)
