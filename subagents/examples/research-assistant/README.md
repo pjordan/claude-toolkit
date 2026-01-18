@@ -87,6 +87,10 @@ Based on these three papers, what research gaps do you see?
 - Not a substitute for reading original papers
 - May miss nuanced domain-specific details
 
+## Examples
+
+- [Literature Review](examples/literature-review.md) - Example literature review session
+
 ## See Also
 
 - [Subagents Guide](../../../docs/subagents-guide.md)

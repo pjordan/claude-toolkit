@@ -51,8 +51,8 @@ python scripts/create_agent.py my-agent --type basic --path ./agents
 5. View docs: `http://localhost:8000/docs`
 
 **Template files:**
-- Basic template: `assets/basic-agent/`
-- Advanced template: `assets/advanced-agent/`
+- Basic template: `templates/basic-agent/`
+- Advanced template: `templates/advanced-agent/`
 
 ## Add Handler
 
@@ -157,7 +157,7 @@ curl -N http://localhost:8000/a2a/<stream-handler-name> \
 
 ### Writing Tests
 
-Use the test pattern from `assets/advanced-agent/test_agent.py`:
+Use the test pattern from `templates/advanced-agent/test_agent.py`:
 
 ```python
 import pytest
@@ -216,7 +216,7 @@ For agents with dependencies (Redis, databases):
 docker-compose up -d
 ```
 
-See `assets/advanced-agent/docker-compose.yml` for example configuration.
+See `templates/advanced-agent/docker-compose.yml` for example configuration.
 
 ### Environment Configuration
 
@@ -293,7 +293,7 @@ except Exception as e:
 - `a2a_patterns.md` - Comprehensive A2A patterns: handlers, streaming, error handling, state management, testing
 - `fastapi_integration.md` - FastAPI integration: middleware, authentication, CORS, background tasks
 
-### Assets (`assets/`)
+### Templates (`templates/`)
 - `basic-agent/` - Minimal agent template with simple handler
 - `advanced-agent/` - Full-featured agent with streaming, state, tests, and Docker setup
 
