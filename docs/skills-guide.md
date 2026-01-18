@@ -25,12 +25,12 @@ Skills are structured knowledge packages that give Claude specialized expertise 
 
 ### Skills vs. Prompts
 
-| Aspect | Skills | Prompts |
-|--------|--------|---------|
-| Scope | Comprehensive domain coverage | Single task instruction |
-| Reusability | High - works across many scenarios | Low - task-specific |
-| Structure | Organized methodology | Free-form request |
-| Learning | Teaches approach | Requests action |
+| Aspect      | Skills                          | Prompts                   |
+|-------------|--------------------------------|---------------------------|
+| Scope       | Comprehensive domain coverage  | Single task instruction   |
+| Reusability | High - works across many scenarios | Low - task-specific   |
+| Structure   | Organized methodology          | Free-form request         |
+| Learning    | Teaches approach               | Requests action           |
 
 ## Using Skills
 
@@ -38,7 +38,7 @@ Skills are structured knowledge packages that give Claude specialized expertise 
 
 Copy the skill content into your conversation:
 
-```
+```text
 I need help with [task]. Please use the following skill:
 
 [paste SKILL.md content]
@@ -50,9 +50,9 @@ Now, [specific request]
 
 If Claude has access to the file:
 
-```
-Please use the code-review skill from 
-/path/to/claude-toolkit/skills/examples/code-review/SKILL.md 
+```text
+Please use the code-review skill from
+/path/to/claude-toolkit/skills/examples/code-review/SKILL.md
 to review this code: [code]
 ```
 
@@ -67,9 +67,9 @@ to review this code: [code]
 
 Skills can be combined for complex tasks:
 
-```
-Use the data-analysis skill to analyze this dataset, 
-then use the data-visualization skill to recommend charts, 
+```text
+Use the data-analysis skill to analyze this dataset,
+then use the data-visualization skill to recommend charts,
 and finally use the technical-writing skill to create a report.
 ```
 
@@ -102,7 +102,7 @@ Ask yourself:
 
 Use the provided template:
 
-```
+```text
 skills/examples/your-skill-name/
 ├── SKILL.md          # Main skill content
 └── README.md         # Overview and quick start
@@ -138,7 +138,8 @@ skills/examples/your-skill-name/
 ### Testing Your Skill
 
 1. **Test with Claude**
-   ```
+
+   ```text
    Please use this skill to [task]:
    [paste skill content]
    ```
@@ -158,6 +159,7 @@ skills/examples/your-skill-name/
 ### Writing Style
 
 **Do:**
+
 - Use clear, active language
 - Be specific and concrete
 - Include reasoning, not just steps
@@ -165,6 +167,7 @@ skills/examples/your-skill-name/
 - Use examples liberally
 
 **Don't:**
+
 - Use vague language
 - Assume prior knowledge
 - Skip over important details
@@ -174,7 +177,8 @@ skills/examples/your-skill-name/
 ### Organization
 
 **Effective Structure:**
-```
+
+```text
 1. Overview (what & why)
 2. Prerequisites (what's needed)
 3. Core Concepts (key knowledge)
@@ -188,10 +192,13 @@ skills/examples/your-skill-name/
 ### Examples
 
 **Good Example:**
-```
+
+```text
 ### Example 1: Simple Login Form Validation
 
 **Input:**
+```
+
 ```html
 <form>
   <input type="text" name="username" />
@@ -199,26 +206,30 @@ skills/examples/your-skill-name/
 </form>
 ```
 
+```text
 **Review Focus:**
+```
+
 - Input validation
 - Security considerations
 - Accessibility
 
 **Expected Findings:**
+
 1. Missing CSRF protection
 2. No input validation
 3. Missing labels for accessibility
-...
-```
 
 **Bad Example:**
-```
+
+```text
 Example: Review this form for issues.
 ```
 
 ### Documentation
 
 Include:
+
 - Purpose and scope
 - Target audience
 - Prerequisites
@@ -268,9 +279,7 @@ Reviews REST API designs for usability, consistency, and best practices.
 ## Example
 
 **API Endpoint:**
-```
 GET /api/getUsers?id=123
-```
 
 **Issues:**
 - Non-RESTful URL (verb in path)
@@ -279,14 +288,13 @@ GET /api/getUsers?id=123
 - No pagination info
 
 **Improved:**
-```
 GET /api/v1/users/123
-```
 ```
 
 ### Example Skill: SQL Query Optimization
 
 Focus on:
+
 - Query structure analysis
 - Index recommendations
 - Join optimization
@@ -299,6 +307,7 @@ Include examples of slow queries and optimized versions.
 ### How long should a skill be?
 
 Long enough to be comprehensive, short enough to be useful. Typically:
+
 - Simple skills: 300-500 lines
 - Moderate skills: 500-1000 lines
 - Complex skills: 1000-2000 lines
@@ -310,6 +319,7 @@ Yes! Include a "Related Skills" section to reference complementary skills.
 ### How specific should skills be?
 
 Balance specificity with reusability:
+
 - ✅ "Python Code Review" (good specificity)
 - ❌ "Review Flask App Login Function" (too specific)
 - ❌ "Code Review" (too broad)
@@ -317,11 +327,13 @@ Balance specificity with reusability:
 ### Should I include code in skills?
 
 Yes, when it helps demonstrate concepts. But focus on:
+
 - Illustrative examples
 - Common patterns
 - Before/after comparisons
 
 Avoid:
+
 - Complete implementations
 - Library-specific code (unless that's the skill's focus)
 - Code without explanation
@@ -347,8 +359,9 @@ Yes, but document dependencies clearly:
 ### What if my skill becomes outdated?
 
 Mark it as deprecated with:
+
 ```markdown
-> ⚠️ **DEPRECATED**: This skill is outdated. 
+> ⚠️ **DEPRECATED**: This skill is outdated.
 > Use [new-skill-name] instead.
 ```
 
