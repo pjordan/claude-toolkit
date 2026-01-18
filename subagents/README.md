@@ -13,14 +13,29 @@ Subagents are specialized configurations of Claude that:
 ## 🎯 Available Subagents
 
 ### Research Assistant
-**Path**: `examples/research-assistant/`  
-**Purpose**: Academic research, literature review, citation management  
+**Path**: `examples/research-assistant/`
+**Purpose**: Academic research, literature review, citation management
 **Best For**: Students, researchers, academics
 
 ### Code Generator
-**Path**: `examples/code-generator/`  
-**Purpose**: Boilerplate code creation, scaffolding, templates  
+**Path**: `examples/code-generator/`
+**Purpose**: Boilerplate code creation, scaffolding, templates
 **Best For**: Developers starting new projects or features
+
+### A2A Agent Developer
+**Path**: `examples/a2a-agent-developer/`
+**Purpose**: Building A2A agents with a2a-sdk and FastAPI
+**Best For**: Developers building agent-to-agent systems
+
+### UCP Commerce Developer
+**Path**: `examples/ucp-commerce-developer/`
+**Purpose**: Integrating with UCP merchants for agentic commerce
+**Best For**: Developers building shopping agents and payment flows
+
+### Agent Testing Specialist
+**Path**: `examples/agent-testing-specialist/`
+**Purpose**: Testing A2A and UCP agents with pytest
+**Best For**: QA engineers and developers writing comprehensive tests
 
 ## 🔧 Using a Subagent
 
@@ -97,6 +112,7 @@ subagents/examples/your-subagent-name/
 ## 📋 Subagent Categories
 
 - **Development**: Code generation, review, debugging
+- **Agent Development**: A2A agents, UCP commerce, agent testing
 - **Research**: Literature review, analysis, synthesis
 - **Writing**: Content creation, editing, style
 - **Analysis**: Data analysis, insights, reporting
