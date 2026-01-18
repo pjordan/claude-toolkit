@@ -1,0 +1,87 @@
+name: Validate Repository
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-skills:
+    name: Validate Skills
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate skills
+        run: python tests/validate_skills.py
+
+  validate-mcps:
+    name: Validate MCPs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate MCP servers
+        run: python tests/validate_mcps.py
+
+  lint-markdown:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lint markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v19
+
+  check-security:
+    name: Security Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for .env files
+        run: |
+          echo "Checking for committed .env files..."
+          if find . -name ".env" -type f ! -name ".env.example" 2>/dev/null | grep -q .; then
+            echo "::error::Found .env files that should not be committed (only .env.example is allowed)"
+            find . -name ".env" -type f ! -name ".env.example"
+            exit 1
+          fi
+          echo "✅ No .env files found"
+
+      - name: Check for common secret patterns
+        run: |
+          echo "Scanning for potential secrets..."
+          PATTERNS=(
+            'sk-[a-zA-Z0-9]{32,}'
+            'AKIA[0-9A-Z]{16}'
+            'ghp_[a-zA-Z0-9]{36}'
+            'gho_[a-zA-Z0-9]{36}'
+          )
+          FOUND=0
+          for pattern in "${PATTERNS[@]}"; do
+            if grep -rE "$pattern" --include="*.py" --include="*.md" --include="*.txt" --include="*.json" --include="*.yml" --include="*.yaml" . 2>/dev/null | grep -v ".env.example" | grep -v ".github/workflows"; then
+              echo "::warning::Potential secret pattern found: $pattern"
+              FOUND=1
+            fi
+          done
+          if [ $FOUND -eq 1 ]; then
+            echo "::warning::Review the above matches for potential secrets"
+          else
+            echo "✅ No obvious secret patterns detected"
+          fi

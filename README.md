@@ -1,5 +1,7 @@
 # Claude Toolkit
 
+[![Validate Repository](https://github.com/pjordan/claude-toolkit/actions/workflows/validate.yml/badge.svg)](https://github.com/pjordan/claude-toolkit/actions/workflows/validate.yml)
+
 A collection of Claude skills, subagents, and MCP servers for extending Claude's capabilities.
 
 ## 📋 Overview
