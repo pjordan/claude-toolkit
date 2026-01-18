@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pjordan/claude-toolkit/schemas/mcp-server.schema.json",
+  "title": "MCP Server Manifest",
+  "description": "Schema for Model Context Protocol server configuration and metadata",
+  "type": "object",
+  "required": ["name", "version", "description"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique identifier for the MCP server",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "minLength": 2,
+      "maxLength": 50,
+      "examples": ["custom-api", "database-connector"]
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the MCP server",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "examples": ["1.0.0", "0.1.0"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of what this MCP server provides",
+      "minLength": 10,
+      "maxLength": 500,
+      "examples": ["Connects Claude to PostgreSQL databases for query execution"]
+    },
+    "author": {
+      "type": "string",
+      "description": "Author or maintainer of the MCP server"
+    },
+    "license": {
+      "type": "string",
+      "description": "License identifier (SPDX)",
+      "default": "MIT",
+      "examples": ["MIT", "Apache-2.0", "GPL-3.0"]
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the source repository"
+    },
+    "python": {
+      "type": "object",
+      "description": "Python-specific configuration",
+      "properties": {
+        "requires": {
+          "type": "string",
+          "description": "Minimum Python version required",
+          "pattern": "^>=?\\d+\\.\\d+$",
+          "examples": [">=3.10", ">=3.11"]
+        },
+        "entrypoint": {
+          "type": "string",
+          "description": "Main Python file to execute",
+          "default": "server.py",
+          "examples": ["server.py", "src/main.py"]
+        }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "description": "List of tools provided by this MCP server",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Tool identifier",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "examples": ["query", "list_tables", "api_request"]
+          },
+          "description": {
+            "type": "string",
+            "description": "What this tool does"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "JSON Schema for tool parameters"
+          }
+        }
+      }
+    },
+    "environment": {
+      "type": "array",
+      "description": "Environment variables required by this server",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Environment variable name",
+            "pattern": "^[A-Z][A-Z0-9_]*$",
+            "examples": ["API_KEY", "DB_HOST"]
+          },
+          "description": {
+            "type": "string",
+            "description": "What this variable is used for"
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether this variable is required",
+            "default": true
+          },
+          "default": {
+            "type": "string",
+            "description": "Default value if not provided"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags for categorization and discovery",
+      "items": {
+        "type": "string"
+      },
+      "examples": [["database", "sql", "postgresql"]]
+    }
+  },
+  "additionalProperties": false
+}

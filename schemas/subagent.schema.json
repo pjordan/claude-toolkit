@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pjordan/claude-toolkit/schemas/subagent.schema.json",
+  "title": "Claude Subagent Configuration",
+  "description": "Schema for configuring Claude subagent instances with specialized system prompts and parameters",
+  "type": "object",
+  "required": ["name", "model", "system"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for the subagent",
+      "minLength": 1,
+      "maxLength": 100,
+      "examples": ["Research Assistant", "Code Generator"]
+    },
+    "model": {
+      "type": "string",
+      "description": "Claude model identifier to use",
+      "enum": [
+        "claude-opus-4-20250514",
+        "claude-sonnet-4-20250514",
+        "claude-3-5-sonnet-20241022",
+        "claude-3-5-haiku-20241022",
+        "claude-3-opus-20240229",
+        "claude-3-sonnet-20240229",
+        "claude-3-haiku-20240307"
+      ],
+      "examples": ["claude-sonnet-4-20250514"]
+    },
+    "max_tokens": {
+      "type": "integer",
+      "description": "Maximum number of tokens in the response",
+      "minimum": 1,
+      "maximum": 128000,
+      "default": 4096,
+      "examples": [4096, 8192, 16384]
+    },
+    "temperature": {
+      "type": "number",
+      "description": "Sampling temperature (0.0 = deterministic, 1.0 = creative)",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "default": 1.0,
+      "examples": [0.3, 0.5, 0.7]
+    },
+    "top_p": {
+      "type": "number",
+      "description": "Nucleus sampling parameter",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "examples": [0.9, 0.95]
+    },
+    "top_k": {
+      "type": "integer",
+      "description": "Top-k sampling parameter",
+      "minimum": 1,
+      "examples": [40, 50]
+    },
+    "system": {
+      "type": "string",
+      "description": "System prompt that defines the subagent's role and behavior",
+      "minLength": 10,
+      "examples": ["You are an academic research assistant with expertise in literature review..."]
+    },
+    "stop_sequences": {
+      "type": "array",
+      "description": "Sequences that will stop generation",
+      "items": {
+        "type": "string"
+      },
+      "examples": [["Human:", "User:"]]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the subagent",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Version of this subagent configuration",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "examples": ["1.0.0"]
+        },
+        "author": {
+          "type": "string",
+          "description": "Author or maintainer"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags for categorization",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["research", "academic", "literature"]]
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the subagent's purpose"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
