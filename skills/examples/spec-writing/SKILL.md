@@ -507,6 +507,7 @@ Status: [Draft | Review | Approved | Implemented]
 
 ## Related Skills
 
+- **Plan Writing**: Create implementation plans from specifications
 - **Spec-Driven Development**: Implementing code from specifications
 - **Code Review**: Validating implementation against spec
 - **API Design**: Specialized API specification patterns

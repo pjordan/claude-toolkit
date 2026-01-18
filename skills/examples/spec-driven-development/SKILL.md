@@ -529,6 +529,7 @@ When implementing from a spec, provide updates in this format:
 ## Related Skills
 
 - **Spec Writing**: Create the specifications this skill implements
+- **Plan Writing**: Break down specs into implementation plans
 - **Code Review**: Verify implementation matches specification
 - **Test Writing**: Create tests that verify spec compliance
 
