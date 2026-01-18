@@ -16,6 +16,7 @@ Thank you for your interest in contributing! This guide will help you get starte
 ### Code Style
 
 #### Python
+
 - Follow PEP 8 style guidelines
 - Use type hints where applicable
 - Include docstrings for functions and classes
@@ -25,10 +26,10 @@ Thank you for your interest in contributing! This guide will help you get starte
 def example_function(param: str) -> dict:
     """
     Brief description of function.
-    
+
     Args:
         param: Description of parameter
-        
+
     Returns:
         Description of return value
     """
@@ -36,6 +37,7 @@ def example_function(param: str) -> dict:
 ```
 
 #### Markdown
+
 - Use clear, descriptive headers
 - Include code examples where relevant
 - Keep line length reasonable (80-100 chars when practical)
@@ -61,12 +63,14 @@ All contributions must include:
 ## 🔍 Pull Request Process
 
 1. **Fork and Clone**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/claude-toolkit.git
    cd claude-toolkit
    ```
 
 2. **Create Branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -76,17 +80,14 @@ All contributions must include:
    - Test your contribution thoroughly
    - Update documentation
 
-4. **Set Up Pre-commit Hooks** (recommended)
-   ```bash
-   pip install pre-commit
-   pre-commit install
-   ```
+4. **Run Tests**
 
-5. **Run Tests**
    ```bash
    python tests/validate_skills.py
    python tests/validate_mcps.py
    ```
+
+5. **Commit Changes**
 
    Or run all checks via pre-commit:
    ```bash
@@ -98,7 +99,7 @@ All contributions must include:
    git add .
    git commit -m "Add: brief description of changes"
    ```
-   
+
    Commit message format:
    - `Add:` for new features
    - `Fix:` for bug fixes
@@ -109,6 +110,7 @@ All contributions must include:
    ```bash
    git push origin feature/your-feature-name
    ```
+
    Then open a Pull Request on GitHub
 
 ### PR Checklist
@@ -123,15 +125,18 @@ All contributions must include:
 ## 🧪 Testing
 
 ### Skills
+
 - Verify SKILL.md follows the template
 - Test with Claude to ensure it works as documented
 
 ### MCP Servers
+
 - Include unit tests where applicable
 - Test connection and core functionality
 - Document API requirements
 
 ### Subagents
+
 - Validate configuration format
 - Test key use cases
 - Document expected behavior
@@ -147,18 +152,21 @@ All contributions must include:
 ## 💡 Best Practices
 
 ### Skills
+
 - Focus on a specific domain or task
 - Include concrete examples
 - Explain the reasoning behind approaches
 - Link to relevant documentation
 
 ### MCP Servers
+
 - Follow MCP specification
 - Handle errors gracefully
 - Include comprehensive logging
 - Provide clear setup instructions
 
 ### Subagents
+
 - Define clear use cases
 - Document configuration options
 - Include prompt examples
@@ -180,6 +188,7 @@ All contributions must include:
 ## 🎉 Recognition
 
 Contributors will be:
+
 - Listed in repository acknowledgments
 - Credited in release notes
 - Mentioned in related documentation
