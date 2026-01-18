@@ -1,6 +1,9 @@
 # Claude Toolkit
 
 [![Validate Repository](https://github.com/pjordan/claude-toolkit/actions/workflows/validate.yml/badge.svg)](https://github.com/pjordan/claude-toolkit/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 A collection of Claude skills, subagents, and MCP servers for extending Claude's capabilities.
 
