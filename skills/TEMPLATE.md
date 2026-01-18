@@ -102,6 +102,12 @@ Use this template to create new skills for Claude.
 - [Related skill 1]
 - [Related skill 2]
 
+## Compatibility
+
+- **Claude Models**: [e.g., All Claude 3+ models, Claude Sonnet 4 recommended]
+- **Interfaces**: [e.g., Claude.ai, API, Claude Code]
+- **Minimum API Version**: [e.g., 2024-01-01 or "Any"]
+
 ## Author
 
 [Your name or GitHub username]
