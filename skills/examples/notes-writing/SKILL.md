@@ -1,3 +1,8 @@
+---
+name: notes-writing
+description: Write clear development notes that document what was built, decisions made, and verification performed. Use when completing tasks, closing out feature implementations, documenting decisions, recording deviations from plans, capturing verification and testing, noting follow-up work, or building institutional knowledge. Triggers include "write notes", "development notes", "implementation notes", "document decisions", "capture context", or when recording the story of implementation work.
+---
+
 # Notes Writing Skill
 
 Write clear development notes that document what was built, decisions made, and verification performed.

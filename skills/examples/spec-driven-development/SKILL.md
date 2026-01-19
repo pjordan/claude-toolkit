@@ -1,3 +1,8 @@
+---
+name: spec-driven-development
+description: Implement features systematically by following technical specifications, ensuring complete coverage of requirements and edge cases. Use when implementing features from written specifications, building APIs from OpenAPI/Swagger specs, translating design documents into code, ensuring implementation matches requirements, or creating tests that verify spec compliance. Triggers include "implement spec", "implement from spec", "spec implementation", "build from spec", "follow specification", or when coding from documented requirements.
+---
+
 # Spec-Driven Development Skill
 
 Implement features systematically by following technical specifications, ensuring complete coverage of requirements and edge cases.
