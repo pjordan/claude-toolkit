@@ -1,3 +1,8 @@
+---
+name: progress-writing
+description: Write effective progress files that enable continuity across sessions and agent handoffs in spec-driven development. Use when starting work sessions, resuming after breaks, completing tasks or milestones, encountering blockers, handing off work, recording test results, or documenting issues and resolutions. Triggers include "progress log", "session log", "write progress", "handoff notes", "work log", or when capturing session-by-session work history for continuity.
+---
+
 # Progress Writing Skill
 
 Write effective progress files that enable continuity across sessions and agent handoffs in spec-driven development.

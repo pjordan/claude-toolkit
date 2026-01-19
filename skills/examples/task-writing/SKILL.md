@@ -1,3 +1,8 @@
+---
+name: task-writing
+description: Write high-quality, actionable tasks that are clear, well-scoped, and contain all the information needed for successful execution. Use when breaking down implementation plans, creating issues for bug fixes or features, writing tickets for sprints, defining work items from spec requirements, converting user feedback into tasks, or creating technical debt items. Triggers include "write task", "create issue", "write ticket", "define task", "bug report", "feature request", or when creating trackable units of work.
+---
+
 # Task Writing Skill
 
 Write high-quality, actionable tasks that are clear, well-scoped, and contain all the information needed for successful execution.

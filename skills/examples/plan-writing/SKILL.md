@@ -1,3 +1,8 @@
+---
+name: plan-writing
+description: Write high-quality implementation plans that break down complex work into clear, actionable steps with identified risks and dependencies. Use when breaking down feature specs, planning refactoring or migration efforts, coordinating work across components, identifying technical risks, or creating roadmaps for complex changes. Triggers include "implementation plan", "write plan", "plan feature", "break down work", "technical planning", or when transforming requirements into concrete implementation steps.
+---
+
 # Plan Writing Skill
 
 Write high-quality implementation plans that break down complex work into clear, actionable steps with identified risks and dependencies.

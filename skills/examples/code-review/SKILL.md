@@ -1,3 +1,8 @@
+---
+name: code-review
+description: Comprehensive code review with best practices, security, and maintainability checks. Use when reviewing pull requests, pre-commit code checks, learning code review techniques, improving code quality, or performing security audits. Triggers include "code review", "review code", "PR review", "pull request review", "security review", "code quality", or when evaluating code for issues and improvements.
+---
+
 # Code Review Skill
 
 Comprehensive code review with best practices, security, and maintainability checks.

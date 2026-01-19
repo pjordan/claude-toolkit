@@ -1,3 +1,8 @@
+---
+name: spec-writing
+description: Write high-quality technical specifications that enable clear communication, reduce ambiguity, and drive successful implementation. Use when planning new features, designing APIs, documenting system architecture decisions, creating technical requirements, writing acceptance criteria, preparing RFCs, defining data models, or specifying integration requirements. Triggers include "write spec", "technical specification", "feature spec", "API spec", "requirements document", "RFC", or when creating documentation that defines what to build.
+---
+
 # Spec Writing Skill
 
 Write high-quality technical specifications that enable clear communication, reduce ambiguity, and drive successful implementation.

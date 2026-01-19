@@ -1,3 +1,8 @@
+---
+name: data-analysis
+description: Statistical analysis and data exploration workflows for effective data-driven insights. Use when analyzing datasets, performing exploratory data analysis (EDA), statistical hypothesis testing, data visualization planning, finding patterns and insights, or preparing analysis reports. Triggers include "analyze data", "data analysis", "statistics", "EDA", "exploratory analysis", "data patterns", or when working with datasets requiring statistical insights.
+---
+
 # Data Analysis Skill
 
 Statistical analysis and data exploration workflows for effective data-driven insights.
